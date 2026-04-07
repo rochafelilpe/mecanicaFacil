@@ -1,7 +1,4 @@
-show databases;
 
-CREATE DATABASE IF NOT EXISTS mecanica_facil; 
-USE mecanica_facil; 
 
 CREATE TABLE veiculo (
     placa VARCHAR(10) PRIMARY KEY,
@@ -31,4 +28,5 @@ CREATE TABLE servico(
 );
 
 show tables;
+select * from cliente;
 

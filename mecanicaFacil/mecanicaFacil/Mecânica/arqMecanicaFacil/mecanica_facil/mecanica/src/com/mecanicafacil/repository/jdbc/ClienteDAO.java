@@ -3,7 +3,7 @@ package com.mecanicafacil.repository.jdbc;
 
 import com.mecanicafacil.model.Cliente;
 import com.mecanicafacil.repository.ClienteRepository;
-import com.mecanicafacil.repository.ConexaoBanco;
+import com.mecanicafacil.repository.jdbc.ConexaoBanco;
 
 import java.sql.*;
 import java.util.ArrayList; 
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ClienteDAO implements ClienteRepository {
 
-    
+    @Override
     public void salvar(Cliente cliente) {
         //Nome é obrigatório (Validação simples antes de ir ao banco)
         if (cliente.getNome() == null || cliente.getNome().isEmpty()) {
@@ -22,7 +22,7 @@ public class ClienteDAO implements ClienteRepository {
         String sql = "INSERT INTO cliente (nome, telefone, endereco) VALUES (?, ?, ?)";
 
         try (Connection conn = ConexaoBanco.getConexao();
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getTelefone());
@@ -37,6 +37,7 @@ public class ClienteDAO implements ClienteRepository {
         }
     }
     
+    @Override
     public List<Cliente> listarTodos() {
         List<Cliente> clientes = new ArrayList<>();
         String sql = "SELECT * FROM cliente";
@@ -50,7 +51,7 @@ public class ClienteDAO implements ClienteRepository {
                 c.setNome(rs.getString("nome"));
                 c.setTelefone(rs.getString("telefone"));
                 c.setEndereco(rs.getString("endereco"));
-                // Nota: Os veículos seriam carregados pelo VeiculoDAO usando o ID deste cliente
+                
                 clientes.add(c);
             }
         } catch (SQLException e) {
