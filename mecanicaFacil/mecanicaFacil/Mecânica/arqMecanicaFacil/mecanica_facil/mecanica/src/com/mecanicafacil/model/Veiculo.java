@@ -3,9 +3,10 @@ package com.mecanicafacil.model;
 
 
 public class Veiculo {
+   private int id;
+   private String placa; 
    private String modelo;
    private String marca;
-   private String placa; 
    private String cor; 
    private int ano; 
    private Cliente cliente;
@@ -24,6 +25,10 @@ public class Veiculo {
    }
    
    //getters e setters 
+   public int getId(){
+       return id;
+   }
+   
    public String getModelo(){
        return modelo;
    }

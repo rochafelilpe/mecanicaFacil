@@ -15,10 +15,8 @@ public class ClienteDAO implements ClienteRepository {
     @Override
     public void salvar(Cliente cliente) {
         //Nome é obrigatório (Validação simples antes de ir ao banco)
-        if (cliente.getNome() == null || cliente.getNome().isEmpty()) {
-            throw new RuntimeException("O nome do cliente é obrigatório.");
-        }
-
+        if (cliente.getNome() == null || cliente.getNome().isEmpty()) throw new RuntimeException("Descrição obrigatória.");
+        
         String sql = "INSERT INTO cliente (nome, telefone, endereco) VALUES (?, ?, ?)";
 
         try (Connection conn = ConexaoBanco.getConexao();

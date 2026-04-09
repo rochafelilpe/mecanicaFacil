@@ -12,4 +12,6 @@ public interface ServicoRepository {
     
     List<Servico> listarTodos(); 
     
+    //Cliente buscarPorPlaca(String placa);
+        
 }

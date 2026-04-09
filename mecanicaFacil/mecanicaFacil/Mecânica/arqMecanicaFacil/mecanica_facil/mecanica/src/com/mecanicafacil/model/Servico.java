@@ -1,6 +1,7 @@
 package com.mecanicafacil.model;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Servico {
     private int id; 
@@ -25,35 +26,35 @@ public class Servico {
     public int getId(){
         return id;
     }
-    public void setId(){
+    public void setId(int id){
         this.id = id;
     }
     
     public String getDescricao(){
         return descricao;
     }
-    public void setDescricao(){
+    public void setDescricao(String descricao){
         this.descricao = descricao;
     }
     
     public double getValor(){
         return valor;
     }
-    public void setValor(){
+    public void setValor(double valor){
         this.valor = valor;
     }
     
     public Veiculo getVeiculo(){
         return veiculo;
     }
-    public void setVeiculo(){
+    public void setVeiculo(int id){
         this.veiculo = veiculo;
     }
     
     public LocalDate getData(){
         return data;
     }
-    public void setData(){
+    public void setData(LocalDate data){
         this.data = data;
     }
 }

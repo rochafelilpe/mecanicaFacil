@@ -11,9 +11,9 @@ public class testeCliente {
 
         // Criando um novo cliente para teste
         Cliente novo = new Cliente();
-        novo.setNome("fabio");
-        novo.setTelefone("5345345");
-        novo.setEndereco("Rua do Concerto, 11");
+        novo.setNome("Gaby");
+        novo.setTelefone("11959893862");
+        novo.setEndereco("Rua augusto franco de souza, 90");
 
         try {
             System.out.println("Tentando salvar cliente...");
