@@ -86,7 +86,7 @@ public class ClienteDAO implements ClienteRepository {
             
             
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao salvar cliente no banco: " + e.getMessage());
+            throw new RuntimeException("Erro ao atualizar cliente no banco: " + e.getMessage());
         } 
     }
     
