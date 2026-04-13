@@ -8,10 +8,8 @@ import java.util.List;
 public interface ServicoRepository {
     void registrar(Servico servico);
     
-    List<Servico> listarPorCliente(String nomeCliente); 
-    
     List<Servico> listarTodos(); 
     
-    //Cliente buscarPorPlaca(String placa);
+    List<Servico> buscarPorPlaca(String placa);
         
 }

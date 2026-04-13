@@ -65,10 +65,32 @@ public class ServicoDAO implements ServicoRepository{
             throw new RuntimeException("Erro ao listar clientes: " + e.getMessage());
         }
         return servicos;
-    }   
+    }
     
-        @Override
-    public List<Servico> listarPorCliente(String nomeCliente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    @Override
+    public List<Servico> buscarPorPlaca(String placa) {
+        List<Servico> servicos = new ArrayList<>();
+        String sql = "SELECT s.* FROM servico s " +
+                     "JOIN veiculo v ON s.veiculo_id = v.id " +
+                     "WHERE v.placa = ?";
+
+        try (Connection conn = ConexaoBanco.getConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, placa);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Servico s = new Servico();
+                s.setId(rs.getInt("id"));
+                s.setDescricao(rs.getString("descricao"));
+                s.setValor(rs.getDouble("valor"));
+                s.setData(rs.getDate("data").toLocalDate());
+                servicos.add(s);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao buscar serviços pela placa: " + e.getMessage());
+        }
+        return servicos;
     }
 }
