@@ -91,7 +91,31 @@ public class ClienteDAO implements ClienteRepository {
     }
     
     @Override
-    public void excluir(String placa) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+    public void excluir(int id) {
+        //código que roda na base
+        String sql = "DELETE FROM cliente WHERE id = ?";
+        
+        try (Connection conn = ConexaoBanco.getConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            
+            //preenchendo o id para buscar e excluir
+            stmt.setInt(1, id); 
+            
+            //executa a exclusão
+            int linhasAfetadas = stmt.executeUpdate();
+            
+            //linha para ajudar nos testes
+            System.out.println("Exclusão realizada com sucesso!");
+            
+            if (linhasAfetadas > 0) {
+                System.out.println("Cliente com id: " + id + " excluido com sucesso!");
+            } else {
+                System.out.println("Nenhum cliente encontrado com o ID: " + id);
+            }
+            
+            
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao excluir cliente do banco: " + e.getMessage());
+        } 
     }
 }
