@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public class testeServico {
     public static void main(String[] args) {
         ServicoDAO dao = new ServicoDAO();
-
+        
         // Criando um novo cliente para teste
         Servico novo = new Servico();
         novo.setDescricao("Troquei o motor do carro");

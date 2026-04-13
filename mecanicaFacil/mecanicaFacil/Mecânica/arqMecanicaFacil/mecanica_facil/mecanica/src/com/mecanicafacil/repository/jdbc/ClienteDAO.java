@@ -15,7 +15,7 @@ public class ClienteDAO implements ClienteRepository {
     @Override
     public void salvar(Cliente cliente) {
         //Nome é obrigatório (Validação simples antes de ir ao banco)
-        if (cliente.getNome() == null || cliente.getNome().isEmpty()) throw new RuntimeException("Descrição obrigatória.");
+        if (cliente.getNome() == null || cliente.getNome().isEmpty()) throw new RuntimeException("Nome é um campo obrigatório.");
         
         String sql = "INSERT INTO cliente (nome, telefone, endereco) VALUES (?, ?, ?)";
 
@@ -60,16 +60,38 @@ public class ClienteDAO implements ClienteRepository {
     
     @Override
     public void atualizar(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        //código que roda na base
+        String sql = "UPDATE cliente set nome=?, telefone=?, endereco=? WHERE id;?";
+        
+        try (Connection conn = ConexaoBanco.getConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            
+            //preenchendo os valores para atualizar na base
+            stmt.setString(1, cliente.getNome());
+            stmt.setString(2, cliente.getTelefone());
+            stmt.setString(3, cliente.getEndereco());
+            stmt.setInt(4, cliente.getId()); 
+            
+            //executa a atualização
+            int linhasAfetadas = stmt.executeUpdate();
+            
+            //linha para ajudar nos testes
+            System.out.println("Cliente " + cliente.getNome() + " cadastrado com sucesso!");
+            
+            if (linhasAfetadas > 0) {
+                System.out.println("Dados do cliente " + cliente.getNome() + " atualizados com sucesso!");
+            } else {
+                System.out.println("Nenhum cliente encontrado com o ID: " + cliente.getId());
+            }
+            
+            
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao salvar cliente no banco: " + e.getMessage());
+        } 
     }
     
     @Override
     public void excluir(String placa) {
         throw new UnsupportedOperationException("Not supported yet."); 
-    }
-
-    @Override
-    public Cliente buscarPorPlaca(String placa) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

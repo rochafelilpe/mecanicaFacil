@@ -7,14 +7,12 @@ import java.util.List;
 
 public interface ClienteRepository {
     void salvar(Cliente cliente); 
-    
-    Cliente buscarPorPlaca(String placa);
-    
+     
     List<Cliente> listarTodos(); 
     
     void atualizar(Cliente cliente);
     
-    void excluir(String placa); 
+    void excluir(int id); 
     
     
 }
