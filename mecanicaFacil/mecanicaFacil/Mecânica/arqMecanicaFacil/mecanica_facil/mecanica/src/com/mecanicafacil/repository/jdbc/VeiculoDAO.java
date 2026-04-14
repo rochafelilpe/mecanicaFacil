@@ -12,7 +12,7 @@ import java.util.List;
 public class VeiculoDAO implements VeiculoRepository {
     @Override
     public void registrar(Veiculo veiculo) {
-        String sql = "INSERT INTO veiculo (placa, marca, modelo, ano, cor cliente_id) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO veiculo (placa, marca, modelo, ano, cor, cliente_id) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = ConexaoBanco.getConexao();
             PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -35,10 +35,10 @@ public class VeiculoDAO implements VeiculoRepository {
     @Override
     public void atualizar(Veiculo veiculo) {
         //código que roda na base
-        String sql = "UPDATE veiculo set placa=?, marca=?, modelo=?, ano=?, cor=? WHERE id;?";
+        String sql = "UPDATE veiculo set placa=?, marca=?, modelo=?, ano=?, cor=? WHERE id=?";
         
         try (Connection conn = ConexaoBanco.getConexao();
-            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
             
             //preenchendo os valores para atualizar na base
             stmt.setString(1, veiculo.getPlaca());
@@ -66,7 +66,7 @@ public class VeiculoDAO implements VeiculoRepository {
         String sql = "DELETE FROM veiculo WHERE id = ?";
         
         try (Connection conn = ConexaoBanco.getConexao();
-            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
             
             //preenchendo o id para buscar e excluir
             stmt.setInt(1, id);
