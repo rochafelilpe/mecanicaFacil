@@ -31,5 +31,5 @@ CREATE TABLE servico(
 );
 
 show tables;
-select * from servico;
+select * from veiculo;
 
