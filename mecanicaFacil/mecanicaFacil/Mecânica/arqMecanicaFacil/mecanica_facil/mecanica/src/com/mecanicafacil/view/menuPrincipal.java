@@ -17,6 +17,8 @@ public class menuPrincipal extends javax.swing.JFrame {
      */
     public menuPrincipal() {
         initComponents();
+        //faz a tela de consulta aparecer assim que o programa abrir
+        trocarTela(new TelaConsultaGeral());
     }
 
     /**
@@ -28,21 +30,63 @@ public class menuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        btnConsultaGeral = new javax.swing.JButton();
+        btnHistorico = new javax.swing.JButton();
+        btnCadastroServico = new javax.swing.JButton();
+        btnCadastroClienteVeiculo = new javax.swing.JButton();
+        painelCorpo = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jPanel1.setLayout(new java.awt.GridLayout(1, 4));
+
+        btnConsultaGeral.setFont(new java.awt.Font("JetBrains Mono Light", 1, 16)); // NOI18N
+        btnConsultaGeral.setForeground(new java.awt.Color(255, 255, 255));
+        btnConsultaGeral.setText("Consulta");
+        btnConsultaGeral.setContentAreaFilled(false);
+        btnConsultaGeral.addActionListener(this::btnConsultaGeralActionPerformed);
+        jPanel1.add(btnConsultaGeral);
+
+        btnHistorico.setFont(new java.awt.Font("JetBrains Mono Light", 1, 16)); // NOI18N
+        btnHistorico.setForeground(new java.awt.Color(255, 255, 255));
+        btnHistorico.setText("Histórico");
+        btnHistorico.setContentAreaFilled(false);
+        jPanel1.add(btnHistorico);
+
+        btnCadastroServico.setFont(new java.awt.Font("JetBrains Mono Light", 1, 16)); // NOI18N
+        btnCadastroServico.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadastroServico.setText("Cadastrar Serviço");
+        btnCadastroServico.setContentAreaFilled(false);
+        jPanel1.add(btnCadastroServico);
+
+        btnCadastroClienteVeiculo.setFont(new java.awt.Font("JetBrains Mono Light", 1, 16)); // NOI18N
+        btnCadastroClienteVeiculo.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadastroClienteVeiculo.setText("Cadastrar Cliente/Veículo");
+        btnCadastroClienteVeiculo.setContentAreaFilled(false);
+        jPanel1.add(btnCadastroClienteVeiculo);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
+
+        javax.swing.GroupLayout painelCorpoLayout = new javax.swing.GroupLayout(painelCorpo);
+        painelCorpo.setLayout(painelCorpoLayout);
+        painelCorpoLayout.setHorizontalGroup(
+            painelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 624, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        painelCorpoLayout.setVerticalGroup(
+            painelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 366, Short.MAX_VALUE)
         );
+
+        getContentPane().add(painelCorpo, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnConsultaGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaGeralActionPerformed
+        trocarTela(new TelaConsultaGeral());
+    }//GEN-LAST:event_btnConsultaGeralActionPerformed
 
     /**
      * @param args the command line arguments
@@ -68,7 +112,20 @@ public class menuPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new menuPrincipal().setVisible(true));
     }
-
+    
+    private void trocarTela(javax.swing.JPanel novaTela) {
+        painelCorpo.removeAll(); // remove a tela atual
+        painelCorpo.setLayout(new java.awt.BorderLayout()); // garante que a tela ocupe tudo
+        painelCorpo.add(novaTela, java.awt.BorderLayout.CENTER); // adiciona a nova
+        painelCorpo.revalidate(); // recalcula o layout
+        painelCorpo.repaint();    // atualiza a imagem na tela
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCadastroClienteVeiculo;
+    private javax.swing.JButton btnCadastroServico;
+    private javax.swing.JButton btnConsultaGeral;
+    private javax.swing.JButton btnHistorico;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel painelCorpo;
     // End of variables declaration//GEN-END:variables
 }
