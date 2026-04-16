@@ -46,6 +46,7 @@ public class ClienteDAO implements ClienteRepository {
 
             while (rs.next()) {
                 Cliente c = new Cliente();
+                c.setId(rs.getInt("id"));
                 c.setNome(rs.getString("nome"));
                 c.setTelefone(rs.getString("telefone"));
                 c.setEndereco(rs.getString("endereco"));
