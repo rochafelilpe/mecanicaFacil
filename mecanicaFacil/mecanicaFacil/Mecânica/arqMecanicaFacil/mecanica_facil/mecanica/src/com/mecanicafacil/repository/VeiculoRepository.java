@@ -9,4 +9,6 @@ public interface VeiculoRepository {
     void registrar(Veiculo veiculo);
     void atualizar(Veiculo veiculo);
     void excluir(int id);
+    List<Veiculo> buscarPorCliente(int idDono);
+    List<Veiculo> listarTodos();
 }

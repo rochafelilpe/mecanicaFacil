@@ -80,4 +80,54 @@ public class VeiculoDAO implements VeiculoRepository {
             throw new RuntimeException("Erro ao excluir cliente do banco: " + e.getMessage());
         } 
     }
+    
+    public List<Veiculo> buscarPorCliente(int idCliente) {
+        String sql = "SELECT * FROM veiculo WHERE cliente_id = ?";
+        List<Veiculo> veiculos = new ArrayList<>();
+
+        try (Connection conn = ConexaoBanco.getConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idCliente);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Veiculo v = new Veiculo();
+                    v.setPlaca(rs.getString("placa"));
+                    v.setMarca(rs.getString("marca"));
+                    v.setModelo(rs.getString("modelo"));
+                    v.setAno(rs.getInt("ano"));
+                    v.setCor(rs.getString("cor"));
+                    
+                    veiculos.add(v);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao buscar veículos por cliente", e);
+        }
+        return veiculos;
+    }
+    
+    public List<Veiculo> listarTodos() {
+        String sql = "SELECT * FROM veiculo";
+        List<Veiculo> veiculos = new ArrayList<>();
+
+        try (Connection conn = ConexaoBanco.getConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Veiculo v = new Veiculo();
+                v.setPlaca(rs.getString("placa"));
+                v.setMarca(rs.getString("marca"));
+                v.setModelo(rs.getString("modelo"));
+                v.setAno(rs.getInt("ano"));
+                v.setCor(rs.getString("cor"));
+
+                veiculos.add(v);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao listar todos os veículos", e);
+        }
+        return veiculos;
+    }
 }
