@@ -157,6 +157,7 @@ public class TelaConsultaGeral extends javax.swing.JPanel {
     private void tbClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbClientesMouseClicked
         //armazena a linha selecionado pelo mouse
         int linha = tbClientes.getSelectedRow();
+        
         if (linha != -1) {
             int id = (int) tbClientes.getValueAt(linha, 0);
             preencherTabelaVeiculos(id); //passa o ID real para FILTRAR

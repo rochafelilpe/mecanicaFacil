@@ -72,7 +72,7 @@ public class menuPrincipal extends javax.swing.JFrame {
         painelCorpo.setLayout(painelCorpoLayout);
         painelCorpoLayout.setHorizontalGroup(
             painelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 624, Short.MAX_VALUE)
+            .addGap(0, 1184, Short.MAX_VALUE)
         );
         painelCorpoLayout.setVerticalGroup(
             painelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
