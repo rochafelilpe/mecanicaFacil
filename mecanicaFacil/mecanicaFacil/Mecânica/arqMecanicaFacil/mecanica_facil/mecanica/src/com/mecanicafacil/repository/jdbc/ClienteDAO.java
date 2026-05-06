@@ -119,4 +119,28 @@ public class ClienteDAO implements ClienteRepository {
             throw new RuntimeException("Erro ao excluir cliente do banco: " + e.getMessage());
         } 
     }
+    
+    @Override
+    public int buscarIdPorTelefone(String telefone){
+        String sql = "SELECT id FROM cliente WHERE telefone = ?";
+        //tenta se conectar na base
+        try(Connection conn = ConexaoBanco.getConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql)){
+            //atribui o valor de telefone
+            stmt.setString(1, telefone);
+            
+            //se tiver algum resultado com o valor informado
+            try(ResultSet rs = stmt.executeQuery()){
+                if(rs.next()){
+                    //pega o id
+                    return rs.getInt("id");
+                }
+            }
+        }
+        catch(SQLException e){
+            throw new RuntimeException("Erro ao buscar cliente por telefone", e);
+        }
+        
+        return -1;
+    }
 }

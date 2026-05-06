@@ -14,5 +14,6 @@ public interface ClienteRepository {
     
     void excluir(int id); 
     
+    int buscarIdPorTelefone(String Telefone);
     
 }
