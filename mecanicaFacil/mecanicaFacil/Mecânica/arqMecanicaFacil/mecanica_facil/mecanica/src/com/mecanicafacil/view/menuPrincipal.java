@@ -58,12 +58,14 @@ public class menuPrincipal extends javax.swing.JFrame {
         btnCadastroServico.setForeground(new java.awt.Color(255, 255, 255));
         btnCadastroServico.setText("Cadastrar Serviço");
         btnCadastroServico.setContentAreaFilled(false);
+        btnCadastroServico.addActionListener(this::btnCadastroServicoActionPerformed);
         jPanel1.add(btnCadastroServico);
 
         btnCadastroClienteVeiculo.setFont(new java.awt.Font("JetBrains Mono Light", 1, 16)); // NOI18N
         btnCadastroClienteVeiculo.setForeground(new java.awt.Color(255, 255, 255));
         btnCadastroClienteVeiculo.setText("Cadastrar Cliente/Veículo");
         btnCadastroClienteVeiculo.setContentAreaFilled(false);
+        btnCadastroClienteVeiculo.addActionListener(this::btnCadastroClienteVeiculoActionPerformed);
         jPanel1.add(btnCadastroClienteVeiculo);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
@@ -87,6 +89,14 @@ public class menuPrincipal extends javax.swing.JFrame {
     private void btnConsultaGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaGeralActionPerformed
         trocarTela(new TelaConsultaGeral());
     }//GEN-LAST:event_btnConsultaGeralActionPerformed
+
+    private void btnCadastroServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroServicoActionPerformed
+        
+    }//GEN-LAST:event_btnCadastroServicoActionPerformed
+
+    private void btnCadastroClienteVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroClienteVeiculoActionPerformed
+        trocarTela(new TelaCadastroClienteVeiculo());
+    }//GEN-LAST:event_btnCadastroClienteVeiculoActionPerformed
 
     /**
      * @param args the command line arguments

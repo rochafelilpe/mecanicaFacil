@@ -73,6 +73,9 @@
             <Property name="text" type="java.lang.String" value="Cadastrar Servi&#xe7;o"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastroServicoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCadastroClienteVeiculo">
           <Properties>
@@ -85,6 +88,9 @@
             <Property name="text" type="java.lang.String" value="Cadastrar Cliente/Ve&#xed;culo"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastroClienteVeiculoActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
