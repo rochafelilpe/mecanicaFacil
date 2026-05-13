@@ -5,6 +5,7 @@
 package com.mecanicafacil.view;
 
 import com.mecanicafacil.model.Cliente;
+import com.mecanicafacil.model.Veiculo;
 import com.mecanicafacil.repository.jdbc.ClienteDAO;
 import com.mecanicafacil.repository.jdbc.VeiculoDAO;
 import javax.swing.JOptionPane;
@@ -152,37 +153,68 @@ public class TelaCadastroClienteVeiculo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-//        String telefone = txtTelefone.getText().trim();
-//        String nome = txtNome.getText().trim();
-//        String endereco = txtEndereco.getText().trim();
-//        
-//        if(telefone.isEmpty() || txtPlaca.getText().isEmpty()){ 
-//            JOptionPane.showMessageDialog(this, "Telefone e Placa são obrigatórios para identificar o cadastro!");
-//            return;
-//        }
-//        
-//        ClienteDAO clienteDAO = new ClienteDAO(); 
-//        
-//        int idCliente = clienteDAO.buscarIdPorTelefone(telefone);
-//        
-//        if(idCliente == -1){
-//            Cliente novoCliente = new Cliente();
-//            novoCliente.setNome(nome);
-//            novoCliente.setTelefone(telefone);
-//            novoCliente.setEndereco(endereco);
-//            
-//            idCliente = clienteDAO.salvar(novoCliente);
-//        }else{
-//            System.out.println("Cliente recorrente identificado pelo telefone.");
-//        }
-//         
-//        
-//        if(idCliente != -1){
-//            VeiculoDAO veiculoDAO = new VeiculoDAO();
-//            
-//            veiculoDAO.registrar(idCliente);
-//            
-//        } 
+        //captura os dados da view
+        String telefone = txtTelefone.getText().trim();
+        String nome = txtNome.getText().trim();
+        String endereco = txtEndereco.getText().trim();
+
+        String placa = txtPlaca.getText().trim().toUpperCase();
+        String marca = txtMarca.getText().trim();
+        String modelo = txtModelo.getText().trim();
+        String cor = txtCor.getText().trim();
+        String anoTexto = txtAno.getText().trim();
+
+        //checa se telefone ou placa estão vazios
+        if (telefone.isEmpty() || placa.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Telefone e Placa são obrigatórios!");
+            return;
+        }
+
+        try {
+            ClienteDAO clienteDAO = new ClienteDAO();
+            //busca se o cliente já existe pelo telefone
+            int idCliente = clienteDAO.buscarIdPorTelefone(telefone);
+
+            //lógica do Cliente: Se não existir (-1), cadastra um novo
+            if (idCliente == -1) {
+                Cliente novoCliente = new Cliente();
+                novoCliente.setNome(nome);
+                novoCliente.setTelefone(telefone);
+                novoCliente.setEndereco(endereco);
+
+                //O seu método salvar deve retornar o ID gerado pelo MySQL
+                idCliente = clienteDAO.salvar(novoCliente); 
+            }
+
+            //lógica do veículo: Se temos um ID de cliente válido, salvamos o carro
+            if (idCliente != -1) {
+                Veiculo v = new Veiculo();
+                v.setPlaca(placa);
+                v.setMarca(marca);
+                v.setModelo(modelo);
+                v.setCor(cor);
+                
+                //atribuindo o Id do dono ao veículo 
+                Cliente dono = new Cliente();
+                dono.setId(idCliente);
+                v.setCliente(dono); 
+
+                //tratamento do valor de "Ano" 
+                try {
+                    v.setAno(Integer.parseInt(anoTexto));
+                } catch (NumberFormatException e) {
+                    v.setAno(0); //define um valor padrão se o usuário digitar errado
+                }
+
+                VeiculoDAO veiculoDAO = new VeiculoDAO();
+                veiculoDAO.registrar(v); //salva o veículo no banco
+
+                javax.swing.JOptionPane.showMessageDialog(this, "Cadastro de " + nome + " e o veículo " + placa + " realizado!");
+            }
+
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Erro ao salvar: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void txtEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoActionPerformed

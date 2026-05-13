@@ -13,8 +13,8 @@ import java.util.List;
 public class ClienteDAO implements ClienteRepository {
 
     @Override
-    public void salvar(Cliente cliente) {
-        //Nome é obrigatório (Validação simples antes de ir ao banco)
+    public int salvar(Cliente cliente) {
+        //checa se "nome" é vazio ou nulo
         if (cliente.getNome() == null || cliente.getNome().isEmpty()) throw new RuntimeException("Nome é um campo obrigatório.");
         
         String sql = "INSERT INTO cliente (nome, telefone, endereco) VALUES (?, ?, ?)";
@@ -28,11 +28,20 @@ public class ClienteDAO implements ClienteRepository {
             
             stmt.executeUpdate();
             
+            // Recupera o ID gerado
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    return rs.getInt(1); 
+                }
+            }
+            
             System.out.println("Cliente " + cliente.getNome() + " cadastrado com sucesso!");
 
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao salvar cliente no banco: " + e.getMessage());
         }
+        
+        return -1; 
     }
     
     @Override

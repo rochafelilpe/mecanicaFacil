@@ -6,7 +6,7 @@ import com.mecanicafacil.model.Cliente;
 import java.util.List;
 
 public interface ClienteRepository {
-    void salvar(Cliente cliente); 
+    int salvar(Cliente cliente); 
      
     List<Cliente> listarTodos(); 
     
