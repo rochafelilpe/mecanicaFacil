@@ -59,12 +59,12 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtNome" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtTelefone" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtEndereco" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="txtNome" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtTelefone" alignment="0" pref="172" max="32767" attributes="0"/>
+                      <Component id="txtEndereco" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="105" max="32767" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -117,14 +117,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtPlaca" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtMarca" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtModelo" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtAno" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCor" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="txtPlaca" alignment="0" pref="166" max="32767" attributes="0"/>
+                      <Component id="txtMarca" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtModelo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtAno" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtCor" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="116" max="32767" attributes="0"/>
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
