@@ -32,26 +32,43 @@ public class TelaCadastroClienteVeiculo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         panelCliente = new javax.swing.JPanel();
         txtNome = new javax.swing.JTextField();
         txtTelefone = new javax.swing.JTextField();
         txtEndereco = new javax.swing.JTextField();
+        labelNome = new javax.swing.JLabel();
+        labelTelefone = new javax.swing.JLabel();
+        labelEndereco = new javax.swing.JLabel();
         panelVeiculo = new javax.swing.JPanel();
         txtPlaca = new javax.swing.JTextField();
         txtMarca = new javax.swing.JTextField();
         txtModelo = new javax.swing.JTextField();
         txtAno = new javax.swing.JTextField();
         txtCor = new javax.swing.JTextField();
+        labelPlaca = new javax.swing.JLabel();
+        labelMarca = new javax.swing.JLabel();
+        labelModelo = new javax.swing.JLabel();
+        labelAno = new javax.swing.JLabel();
+        labelCor = new javax.swing.JLabel();
         btnCadastrar = new javax.swing.JButton();
+
+        jLabel1.setText("jLabel1");
+
+        jLabel2.setText("jLabel2");
 
         panelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do Cliente"));
 
-        txtNome.setText("Nome");
+        txtTelefone.addActionListener(this::txtTelefoneActionPerformed);
 
-        txtTelefone.setText("Telefone");
-
-        txtEndereco.setText("Endereço");
         txtEndereco.addActionListener(this::txtEnderecoActionPerformed);
+
+        labelNome.setText("Nome");
+
+        labelTelefone.setText("Telefone");
+
+        labelEndereco.setText("Endereço");
 
         javax.swing.GroupLayout panelClienteLayout = new javax.swing.GroupLayout(panelCliente);
         panelCliente.setLayout(panelClienteLayout);
@@ -59,38 +76,51 @@ public class TelaCadastroClienteVeiculo extends javax.swing.JPanel {
             panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtNome)
-                    .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                    .addComponent(txtEndereco))
+                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtNome)
+                        .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                        .addComponent(txtEndereco))
+                    .addComponent(labelNome)
+                    .addComponent(labelTelefone)
+                    .addComponent(labelEndereco))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         panelClienteLayout.setVerticalGroup(
             panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelClienteLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelNome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelTelefone)
+                .addGap(1, 1, 1)
                 .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelEndereco)
+                .addGap(1, 1, 1)
                 .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55))
         );
 
         panelVeiculo.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do Veículo"));
 
-        txtPlaca.setText("Placa");
         txtPlaca.addActionListener(this::txtPlacaActionPerformed);
 
-        txtMarca.setText("Marca");
         txtMarca.addActionListener(this::txtMarcaActionPerformed);
 
-        txtModelo.setText("Modelo");
         txtModelo.addActionListener(this::txtModeloActionPerformed);
 
-        txtAno.setText("Ano");
+        labelPlaca.setText("Placa");
 
-        txtCor.setText("Cor");
+        labelMarca.setText("Marca");
+
+        labelModelo.setText("Modelo");
+
+        labelAno.setText("Ano");
+
+        labelCor.setText("Cor");
 
         javax.swing.GroupLayout panelVeiculoLayout = new javax.swing.GroupLayout(panelVeiculo);
         panelVeiculo.setLayout(panelVeiculoLayout);
@@ -98,26 +128,43 @@ public class TelaCadastroClienteVeiculo extends javax.swing.JPanel {
             panelVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelVeiculoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtPlaca, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                    .addComponent(txtMarca)
-                    .addComponent(txtModelo)
-                    .addComponent(txtAno)
-                    .addComponent(txtCor))
+                .addGroup(panelVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtCor, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtPlaca, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                            .addComponent(txtMarca)
+                            .addComponent(txtModelo)
+                            .addComponent(txtAno)
+                            .addComponent(labelCor))
+                        .addComponent(labelPlaca)
+                        .addComponent(labelMarca)
+                        .addComponent(labelModelo)
+                        .addComponent(labelAno)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         panelVeiculoLayout.setVerticalGroup(
             panelVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelVeiculoLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(labelPlaca)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelMarca)
+                .addGap(5, 5, 5)
                 .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(1, 1, 1)
+                .addComponent(labelModelo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelAno)
+                .addGap(1, 1, 1)
                 .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelCor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(txtCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -138,17 +185,17 @@ public class TelaCadastroClienteVeiculo extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCadastrar)
-                .addGap(161, 161, 161))
+                .addGap(160, 160, 160))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelVeiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnCadastrar)
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -247,9 +294,23 @@ public class TelaCadastroClienteVeiculo extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtModeloActionPerformed
 
+    private void txtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefoneActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel labelAno;
+    private javax.swing.JLabel labelCor;
+    private javax.swing.JLabel labelEndereco;
+    private javax.swing.JLabel labelMarca;
+    private javax.swing.JLabel labelModelo;
+    private javax.swing.JLabel labelNome;
+    private javax.swing.JLabel labelPlaca;
+    private javax.swing.JLabel labelTelefone;
     private javax.swing.JPanel panelCliente;
     private javax.swing.JPanel panelVeiculo;
     private javax.swing.JTextField txtAno;
