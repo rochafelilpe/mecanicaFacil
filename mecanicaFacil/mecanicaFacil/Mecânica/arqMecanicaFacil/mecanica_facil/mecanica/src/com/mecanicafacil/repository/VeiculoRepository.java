@@ -11,4 +11,5 @@ public interface VeiculoRepository {
     void excluir(int id);
     List<Veiculo> buscarPorCliente(int idDono);
     List<Veiculo> listarTodos();
+    Veiculo buscarPorPlaca(String placa);
 }

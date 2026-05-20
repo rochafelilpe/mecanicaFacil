@@ -130,4 +130,43 @@ public class VeiculoDAO implements VeiculoRepository {
         }
         return veiculos;
     }
+    
+    @Override
+    public Veiculo buscarPorPlaca(String placa) {
+        String sql = "SELECT v.*, c.nome AS cliente_nome FROM veiculo v " +
+                "INNER JOIN cliente c ON v.cliente_id = c.id " +
+                "WHERE v.placa = ?";
+
+        try (Connection conn = ConexaoBanco.getConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, placa);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Veiculo v = new Veiculo();
+                    //povoa os dados do veículo
+                    v.setId(rs.getInt("id"));
+                    v.setPlaca(rs.getString("placa"));
+                    v.setMarca(rs.getString("marca"));
+                    v.setModelo(rs.getString("modelo"));
+                    v.setAno(rs.getInt("ano"));
+                    v.setCor(rs.getString("cor"));
+
+                    //cria o cliente associado
+                    Cliente c = new Cliente();
+                    c.setId(rs.getInt("cliente_id"));
+                    c.setNome(rs.getString("cliente_nome"));
+                    v.setCliente(c); //vincula o cliente ao veículo
+
+                    return v;
+            }
+        }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao buscar veiculos pela placa: " + e.getMessage());
+        }
+        return null;
+    }
+    
+    
+    
 }
